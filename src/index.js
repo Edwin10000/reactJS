@@ -2,17 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Header from './Header';
-import Contenedor from './Contenedor';
+import App from './App';
 
 ReactDOM.render( 
-    <Header /> ,
+    <App /> ,
     document.getElementById('header')
-);
-
-ReactDOM.render( 
-    <Contenedor/>,
-    document.getElementById('root')
 );
 
 

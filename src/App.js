@@ -1,12 +1,16 @@
 import './App.css';
-import {Fragment} from 'react';
-import Leela from './assets/img/Leela.jpg';
-const App = _ => {
- 
-    return  (
-        <div>
-            <img src={Leela}/>
-        </div>
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './Header';
+import Contenedor from './Contenedor';
+import Contacto from './Contacto';
+
+function App() {
+    return (
+      <Router>
+        <Route path="/" exact component={ Header } />
+        <Route path="/personajes" exact component={ Contenedor } />
+        <Route path="/contacto" exact component={ Contacto } />
+      </Router>
     )
 }
 
