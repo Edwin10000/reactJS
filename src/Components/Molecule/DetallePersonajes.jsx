@@ -1,20 +1,8 @@
-import React from 'react';
-import Personajes from './Personajes';
-import Leela from './assets/img/Leela.jpg';
-import Philip from './assets/img/Philip J Fry.png';
-import Bender from './assets/img/Bender.png';
-import Amy from './assets/img/Amy Wong.png';
-import Zoidberg from './assets/img/Zoidberg.png';
-import Zapp from './assets/img/Zapp Brannigan.png';
-import Hermes from './assets/img/Hermes Conrad.jpg';
-import Profesor from './assets/img/Profesor.png';
-import Nibbler from './assets/img/Nibbler.jpg';
-import Morbo from './assets/img/Morbo.png';
-import Kif from './assets/img/Kif Kroker.png';
-
+import React from "react";
+import { Link } from "react-router-dom";
 const personajes = [
     {
-        "imagen" :  <img src={Leela}/>,
+        "id": 1,
         "nombre" : "Leela",
         "edad" : 25,
         "genero" : "F",
@@ -22,7 +10,8 @@ const personajes = [
         "ocupacion" : "Capitana de la nave Planet Express"
     },
     {
-        "imagen" :  <img src={Philip}/>,
+       
+        "id": 2,
         "nombre" : "Philip J Fry",
         "edad" : 25,
         "genero" : "M",
@@ -30,7 +19,8 @@ const personajes = [
         "ocupacion" : "Repartidor de la Planet Express"
     },
     {
-        "imagen" :  <img src={Bender}/>,
+        
+        "id": 3,
         "nombre" : "Bender",
         "edad" : 10,
         "genero" : "Hombrebot",
@@ -38,15 +28,17 @@ const personajes = [
         "ocupacion" : "Cocinero y sub-gerente de ventas de Planet Express"
     },
     {
-        "imagen" :  <img src={Amy}/>,
+       
         "nombre" : "Amy Wong",
+        "id": 4,
         "edad" : 22,
         "genero" : "F",
         "raza" : "Humano",
         "ocupacion" : "Becaria de la empresa de transportes Planet Express"
     },
     {
-        "imagen" :  <img src={Zoidberg}/>,
+     
+        "id": 5,
         "nombre" : "Zoidberg",
         "edad" : 86,
         "genero" : "M",
@@ -54,7 +46,8 @@ const personajes = [
         "ocupacion" : "Medico ocupacional de la empresa de transportes Planet Express"
     },
     {
-        "imagen" :  <img src={Zapp}/>,
+      
+        "id": 6,
         "nombre" : "Zapp Brannigan",
         "edad" : 28,
         "genero" : "M",
@@ -62,7 +55,8 @@ const personajes = [
         "ocupacion" : "Capitan del Nimbus"
     },
     {
-        "imagen" :  <img src={Hermes}/>,
+       
+        "id": 7,
         "nombre" : "Hermes Conrad",
         "edad" : 41,
         "genero" : "M",
@@ -70,7 +64,8 @@ const personajes = [
         "ocupacion" : "Ordenar los archivos de la empresa Planet Express"
     },
     {
-        "imagen" :  <img src={Profesor}/>,
+        
+        "id": 8,
         "nombre" : "Profesor Hubert Farnsworth",
         "edad" : 159,
         "genero" : "M",
@@ -78,7 +73,8 @@ const personajes = [
         "ocupacion" : "Cientifico loco, profesor y dueño de Planet Express"
     },
     {
-        "imagen" :  <img src={Nibbler}/>,
+        
+        "id": 9,
         "nombre" : "Nibbler",
         "edad" : 4600000000,
         "genero" : "M",
@@ -86,7 +82,8 @@ const personajes = [
         "ocupacion" : "Embajador de la Tierra Fuente de la materia oscura de Planet Express"
     },
     {
-        "imagen" :  <img src={Morbo}/>,
+        
+        "id": 10,
         "nombre" : "Morbo",
         "edad" : 29,
         "genero" : "M",
@@ -94,7 +91,8 @@ const personajes = [
         "ocupacion" : "Reportero del Canal Noticias 2 y conductor de Te Con Los Titanes"
     },
     {
-        "imagen" :  <img src={Kif}/>,
+        
+        "id": 11,
         "nombre" : "Kif Kroker",
         "edad" : 24,
         "genero" : "M",
@@ -103,12 +101,32 @@ const personajes = [
     },
 ]
 
-const Contenedor = () =>(
-    <>
-        {
-            personajes.map( c => <Personajes imagen={ c.imagen } nombre={ c.nombre } edad={c.edad} genero={ c.genero}  raza={ c.raza} ocupacion={ c.ocupacion} /> )
-        }
-    </>
-);
+const DetallePersonajes= ({match, location, history}) => {
 
-export default Contenedor;
+    console.log(history)
+
+    let personaje = personajes.filter(c => c.id === parseInt(match.params.id))[0]
+    return (
+        <>
+            {
+                personaje ? (
+                    <div className="card col-md-4" >
+            <div className="card-body">
+            <p className="image">Imagen: { personaje.imagen }</p>
+                <h5 className="card-title">{ personaje.nombre }</h5>
+                <p className="card-text">Edad: { personaje.edad }</p>
+                <p className="card-text">Genero: { personaje.genero }</p>
+                <p className="card-text">Raza: { personaje.raza }</p>
+                <p className="card-text">Ocupacion: { personaje.ocupacion }</p>
+                        </div>
+                    </div>
+                ):
+                <h1>Personaje no encontrado</h1>
+            }
+
+            <Link to={`/personajes`}>Ver Todos</Link>
+        </>
+    )
+};
+
+export default DetallePersonajes;

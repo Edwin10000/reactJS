@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Personajes = ({imagen,nombre, edad, genero,raza,ocupacion}) => (
+const Personajes = ({imagen,nombre, edad, genero,raza,ocupacion, id}) => (
     <>
         <div className="card col-md-4" >
             <div className="card-body">
@@ -12,6 +12,7 @@ const Personajes = ({imagen,nombre, edad, genero,raza,ocupacion}) => (
                 <p className="card-text">Genero: { genero }</p>
                 <p className="card-text">Raza: { raza }</p>
                 <p className="card-text">Ocupacion: { ocupacion }</p>
+                <p><a href={`/personajes/${id}`}>Detalle</a></p>
             </div>
         </div>
     </>
